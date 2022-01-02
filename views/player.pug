@@ -7,7 +7,7 @@ head
     for font in fonts
         meta(name='fontsrc' content=font)
     script(defer='defer' src='main.js')
-video#video.video-js.vjs-default-skin.vjs-big-play-centered(controls='' data-setup='{"fluid": true}')
+video#video.video-js.vjs-default-skin.vjs-big-play-centered.vjs-fill(controls='')
     source#videosurce
 audio#audio.video-js(style='display: none')
     source#audiosource
