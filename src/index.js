@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   setInterval(() => {
     if (Math.abs(videoPlayer.currentTime() - audioPlayer.currentTime()) > 0.25)
-      console.log(audioPlayer.paused()) || audioPlayer.currentTime(videoPlayer.currentTime());
+      audioPlayer.currentTime(videoPlayer.currentTime());
   }, 100);
 
 });
