@@ -10,17 +10,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const subSrc = document.querySelector('meta[name="subsrc"]').content;
   const fontsSrc = Array.from(document.querySelectorAll('meta[name="fontsrc"]')).map(element => element.content);
 
-  new SubtitlesOctopus({
-    video: document.getElementById('video'),
-    subUrl: subSrc,
-    fonts: fontsSrc
-  });
-
   document.getElementById('videosurce').src = videoSrc;
   document.getElementById('audiosource').src = audioSrc;
 
   const videoPlayer = videojs('video');
   const audioPlayer = videojs('audio');
+
+  new SubtitlesOctopus({
+    video: document.getElementById('video_html5_api'),
+    subUrl: subSrc,
+    fonts: fontsSrc
+  });
 
   videoPlayer.on('play', () => {
     audioPlayer.currentTime(videoPlayer.currentTime());
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   videoPlayer.on('volumechange', () => {
     audioPlayer.volume(videoPlayer.volume());
-    audioPlayer.muted(videoPlayer.muted())
+    audioPlayer.muted(videoPlayer.muted());
   });
 
 
