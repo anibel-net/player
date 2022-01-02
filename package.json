@@ -1,0 +1,28 @@
+{
+  "name": "anibel-player",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": "https://github.com/anibel-net/player.git",
+  "author": "belarusaed <belarusaed@gmail.com> (https://belarusaed.gay)",
+  "license": "GPL-3.0-only",
+  "private": true,
+  "scripts": {
+    "build": "webpack",
+    "serve": "webpack serve --mode development",
+    "start": "node ."
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^10.2.0",
+    "css-loader": "^6.5.1",
+    "libass-wasm": "^4.0.0",
+    "style-loader": "^3.3.1",
+    "video.js": "^7.17.0",
+    "webpack": "^5.65.0",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.7.2"
+  },
+  "dependencies": {
+    "express": "^4.17.2",
+    "pug": "^3.0.2"
+  }
+}

@@ -1,0 +1,13 @@
+doctype html
+head
+    meta(charset='UTF-8')
+    meta(name='videosrc' content=videoSrc)
+    meta(name='audiosrc' content=audioSrc)
+    meta(name='subsrc' content=subSrc)
+    for font in fonts
+        meta(name='fontsrc' content=font)
+    script(defer='defer' src='main.js')
+video#video.video-js.vjs-default-skin.vjs-big-play-centered(controls='' data-setup='{"fluid": true}')
+    source#videosurce
+audio#audio.video-js(style='display: none')
+    source#audiosource
