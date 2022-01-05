@@ -9,7 +9,12 @@ head
     meta(name='og:title' content=title)
     title #{title}
     script(defer='defer' src='main.js')
-video#video.video-js.vjs-default-skin.vjs-big-play-centered.vjs-fill(controls='')
-    source#videosurce
-audio#audio.video-js(style='display: none')
-    source#audiosource
+body
+    video#video.video-js.vjs-default-skin.vjs-big-play-centered.vjs-fill(controls='')
+        source#videosurce
+    if devmode
+        audio#audio.video-js(controls='')
+            source#audiosource
+    else
+        audio#audio.video-js(style='display: none')
+            source#audiosource
