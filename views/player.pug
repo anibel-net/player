@@ -6,6 +6,8 @@ head
     meta(name='subsrc' content=subSrc)
     for font in fonts
         meta(name='fontsrc' content=font)
+    meta(name='og:title' content=title)
+    title #{title}
     script(defer='defer' src='main.js')
 video#video.video-js.vjs-default-skin.vjs-big-play-centered.vjs-fill(controls='')
     source#videosurce
