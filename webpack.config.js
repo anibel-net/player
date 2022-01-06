@@ -21,10 +21,19 @@ module.exports = {
   },
   plugins: [
     new CopyWebpackPlugin({
-      patterns: [{
-        from: 'subtitles-octopus-worker*',
-        context: 'node_modules/libass-wasm/dist/js/'
-      }]
+      patterns: [
+        {
+          from: 'subtitles-octopus-worker*',
+          context: 'node_modules/libass-wasm/dist/js/'
+        },
+        {
+          from: '*',
+          context: 'public',
+          globOptions: {
+            ignore: ['*.html']
+          }
+        }
+      ]
     })
   ],
   devServer: {
