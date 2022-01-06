@@ -4,4 +4,36 @@ head
     title Anibel Player
     script(defer='defer' src='index.js')
 body
-    p WIP
+    div.container
+        h1 Links Generator
+        form#form(autocomplete=false action="/create" method="post")
+            .mb-3
+                label.form-label(for='videoSrc') Video Source
+                input#videoSrc.form-control(name="videoSrc" aria-describedby='videoSrcHelp' required=true)
+                #videoSrcHelp.form-text Type direct link to video file.
+            .mb-3
+                label.form-label(for='audioSrc') Audio Source
+                input#audioSrc.form-control(name="audioSrc" aria-describedby='audioSrcHelp')
+                #audioSrcHelp.form-text Type direct link to audio file.
+            .mb-3
+                label.form-label(for='subSrc') Subtitles Source
+                input#subSrc.form-control(name="subSrc" aria-describedby='subSrcHelp')
+                #subSrcHelp.form-text Type direct link to .ass subtitles file.
+            .mb-3
+                label.form-label(for='fonts') Fonts Sources
+                textarea#fonts.form-control(name="fonts" aria-describedby='fontsHelp' style="height: 5.375em;")
+                #fontsHelp.form-text Type direct links to font files; one link per line
+            .mb-3
+                label.form-label(for='title') Title
+                input#title.form-control(name="title" aria-describedby='titleHelp')
+                #titleHelp.form-text Type title that will be used for link preview
+            .mb-3
+                label.form-label(for='description') Description
+                input#description.form-control(name="description" aria-describedby='descriptionHelp')
+                #descriptionHelp.form-text Type description that will be used for link preview
+            .mb-3
+                label.form-label(for='image') Image Source
+                input#image.form-control(name="image" aria-describedby='imageHelp')
+                #imageHelp.form-text Type direct link to image that will be used for link preview
+
+            button#submitBtn.btn.btn-primary(type='submit') Submit

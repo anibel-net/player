@@ -1,15 +1,22 @@
 const express = require('express');
+const mongoose = require('mongoose');
 
 const app = express();
 
 app.set('view engine', 'pug');
 app.use(express.static('dist'));
+app.use(require('./routes'));
 
-app.get('/', (req, res) => res.render('index'))
+async function main() {
+  try {
+    await mongoose.connect(process.env.MONGODB_STRING);
+    app.listen(5000);
+  } catch (e) {
+    {
+      console.error(e);
+      process.exit(1);
+    }
+  }
+}
 
-app.get('/player', (req, res) => res.render('player', {
-  ...req.query,
-  fonts: Array.isArray(req.query.fonts) ? req.query.fonts : req.query.fonts ? [req.query.fonts] : []
-}));
-
-app.listen(5000);
+main();
