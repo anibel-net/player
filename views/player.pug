@@ -1,16 +1,20 @@
 doctype html
 head
     meta(charset='UTF-8')
-    meta(name='videosrc' content=videoSrc)
-    meta(name='audiosrc' content=audioSrc)
-    meta(name='subsrc' content=subSrc)
+    meta(property='videosrc' content=videoSrc)
+    meta(property='audiosrc' content=audioSrc)
+    meta(property='subsrc' content=subSrc)
     for font in fonts
-        meta(name='fontsrc' content=font)
-    meta(name='og:title' content=title)
+        meta(property='fontsrc' content=font)
+    meta(property='og:title' content=title)
+    meta(property='og:url' content='Anibel.net')
+    meta(property='g:image' content=imageSrc)
+    meta(property='og:type' content='video.episode')
+    meta(property='og:description' content=description)
     title #{title}
     script(defer='defer' src='player.js')
 body
-    video#video.video-js.vjs-default-skin.vjs-big-play-centered.vjs-fill(controls='')
+    video#video.video-js.vjs-default-skin.vjs-big-play-centered.vjs-fill(controls=true)
         source#videosurce
     if devmode
         audio#audio.video-js(controls='')

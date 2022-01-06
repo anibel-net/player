@@ -5,10 +5,10 @@ import './player.css';
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  const videoSrc = document.querySelector('meta[name="videosrc"]').content;
-  const audioSrc = document.querySelector('meta[name="audiosrc"]').content;
-  const subSrc = document.querySelector('meta[name="subsrc"]').content;
-  const fontsSrc = Array.from(document.querySelectorAll('meta[name="fontsrc"]')).map(element => element.content);
+  const videoSrc = document.querySelector('meta[property="videosrc"]').content;
+  const audioSrc = document.querySelector('meta[property="audiosrc"]').content;
+  const subSrc = document.querySelector('meta[property="subsrc"]').content;
+  const fontsSrc = Array.from(document.querySelectorAll('meta[property="fontsrc"]')).map(element => element.content);
 
   document.getElementById('videosurce').src = videoSrc;
   document.getElementById('audiosource').src = audioSrc;
@@ -17,9 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const audioPlayer = videojs('audio');
 
   new SubtitlesOctopus({
-    video: document.getElementById('video_html5_api'),
-    subUrl: subSrc,
-    fonts: fontsSrc
+    video: document.getElementById('video_html5_api'), subUrl: subSrc, fonts: fontsSrc
   });
 
   videoPlayer.on('play', () => {
@@ -45,8 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   setInterval(() => {
-    if (Math.abs(videoPlayer.currentTime() - audioPlayer.currentTime()) > 0.25)
-      audioPlayer.currentTime(videoPlayer.currentTime());
+    if (Math.abs(videoPlayer.currentTime() - audioPlayer.currentTime()) > 0.25) audioPlayer.currentTime(videoPlayer.currentTime());
   }, 100);
 
 });
