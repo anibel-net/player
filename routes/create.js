@@ -23,7 +23,7 @@ router.post('/create', async (req, res) => {
     fonts: Array.isArray(req.body.fonts) ? [...req.body.fonts] : [],
     title: req.body.title,
     description: req.body.description,
-    image: req.body.image
+    imageSrc: req.body.image
   }, (err, doc) => {
     if (err) return res.sendStatus(500);
     return res.send(doc.shortLink);

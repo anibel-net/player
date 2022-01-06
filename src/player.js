@@ -1,49 +1,43 @@
-import videojs from 'video.js';
+import Plyr from 'plyr';
 import SubtitlesOctopus from 'libass-wasm';
-import 'video.js/dist/video-js.min.css';
+import 'plyr/dist/plyr.css';
 import './player.css';
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  const videoSrc = document.querySelector('meta[property="videosrc"]').content;
-  const audioSrc = document.querySelector('meta[property="audiosrc"]').content;
   const subSrc = document.querySelector('meta[property="subsrc"]').content;
   const fontsSrc = Array.from(document.querySelectorAll('meta[property="fontsrc"]')).map(element => element.content);
 
-  document.getElementById('videosurce').src = videoSrc;
-  document.getElementById('audiosource').src = audioSrc;
-
-  const videoPlayer = videojs('video');
-  const audioPlayer = videojs('audio');
+  const videoPlayer = new Plyr('#video', {
+    controls: ['play-large', 'play', 'mute', 'volume', 'current-time', 'progress', 'pip', 'settings', 'fullscreen'],
+    invertTime: false
+  });
+  const audioPlayer = new Plyr('#audio');
 
   new SubtitlesOctopus({
-    video: document.getElementById('video_html5_api'), subUrl: subSrc, fonts: fontsSrc
+    video: document.getElementById('video'), subUrl: subSrc, fonts: fontsSrc
   });
 
   videoPlayer.on('play', () => {
-    audioPlayer.currentTime(videoPlayer.currentTime());
+    audioPlayer.currentTime = videoPlayer.currentTime;
     audioPlayer.play();
   });
 
-  videoPlayer.on('pause', () => audioPlayer.pause());
-
-  videoPlayer.on('stalled', () => audioPlayer.pause());
-
-  audioPlayer.on('play', () => {
-    videoPlayer.currentTime(audioPlayer.currentTime());
-    videoPlayer.play();
+  videoPlayer.on('pause', () => {
+    audioPlayer.pause();
   });
-
-  audioPlayer.on('stalled', () => videoPlayer.pause());
 
   videoPlayer.on('volumechange', () => {
-    audioPlayer.volume(videoPlayer.volume());
-    audioPlayer.muted(videoPlayer.muted());
+    audioPlayer.volume = videoPlayer.volume;
+    audioPlayer.muted = videoPlayer.muted;
   });
 
+  audioPlayer.on('stalled', () => {
+    videoPlayer.pause();
+  });
 
   setInterval(() => {
-    if (Math.abs(videoPlayer.currentTime() - audioPlayer.currentTime()) > 0.25) audioPlayer.currentTime(videoPlayer.currentTime());
-  }, 100);
+    if (videoPlayer.currentTime - audioPlayer.currentTime > 0.25) audioPlayer.currentTime = videoPlayer.currentTime;
+  }, 3000);
 
 });

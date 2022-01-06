@@ -1,25 +1,19 @@
 doctype html
 head
     meta(charset='UTF-8')
-    meta(property='videosrc' content=videoSrc)
-    meta(property='audiosrc' content=audioSrc)
     meta(property='subsrc' content=subSrc)
     for font in fonts
         meta(property='fontsrc' content=font)
     meta(property='og:title' content=title)
     meta(property='og:url' content='Anibel.net')
-    meta(property='g:image' content=imageSrc)
+    meta(property='og:image' content=imageSrc)
     meta(property='og:type' content='video.episode')
     meta(property='og:description' content=description)
     title #{title}
     link(rel='icon' href='favicon.ico' type='image/x-icon')
     script(defer='defer' src='player.js')
 body
-    video#video.video-js.vjs-default-skin.vjs-big-play-centered.vjs-fill(controls=true)
-        source#videosurce
-    if devmode
-        audio#audio.video-js(controls='')
-            source#audiosource
-    else
-        audio#audio.video-js(style='display: none')
-            source#audiosource
+    video#video(controls=true style='height: 100%;' poster=imageSrc)
+        source#videosurce(src=videoSrc)
+    audio#audio
+        source#audiosource(src=audioSrc)

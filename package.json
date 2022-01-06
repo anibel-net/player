@@ -16,9 +16,9 @@
     "copy-webpack-plugin": "^10.2.0",
     "css-loader": "^6.5.1",
     "libass-wasm": "^4.0.0",
+    "plyr": "^3.6.12",
     "qs": "^6.10.2",
     "style-loader": "^3.3.1",
-    "video.js": "^7.17.0",
     "webpack": "^5.65.0",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.7.2"
