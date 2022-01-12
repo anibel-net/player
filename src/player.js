@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const fontsSrc = Array.from(document.querySelectorAll('meta[property="fontsrc"]')).map(element => element.content);
 
   const videoPlayer = new Plyr('#video', {
-    controls: ['play-large', 'play', 'mute', 'volume', 'current-time', 'progress', 'pip', 'settings', 'fullscreen'],
+    controls: ['play-large', 'play', 'mute', 'volume', 'current-time', 'progress', 'pip', 'fullscreen'],
     invertTime: false
   });
   const audioPlayer = new Plyr('#audio');
